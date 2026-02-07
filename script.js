@@ -22,6 +22,7 @@ const compatibility = {
   "O-": ["O-"]
 };
 
+/* Create blood type buttons */
 function createButtons(grid, isPatient) {
   bloodTypes.forEach(type => {
     const btn = document.createElement("button");
@@ -29,6 +30,7 @@ function createButtons(grid, isPatient) {
     btn.classList.add("blood-btn");
 
     btn.onclick = () => {
+      // Remove selected from siblings
       [...grid.children].forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
 
@@ -47,11 +49,20 @@ function createButtons(grid, isPatient) {
 createButtons(patientGrid, true);
 createButtons(donorGrid, false);
 
+/* Show blood buttons only when main button clicked */
+document.querySelectorAll('.role-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grid = btn.nextElementSibling;
+    grid.style.display = 'grid';
+  });
+});
+
+/* Confirm logic */
 confirmBtn.onclick = () => {
   const isCompatible = compatibility[selectedPatient].includes(selectedDonor);
 
   if (isCompatible) {
-    resultScreen.style.background = "#9cff57";
+    resultScreen.style.background = "#9CFF57";
     resultText.style.color = "#1f5e00";
     resultText.textContent = "COMPATIBLE";
   } else {
@@ -63,6 +74,7 @@ confirmBtn.onclick = () => {
   resultScreen.style.display = "block";
 };
 
+/* Close result screen */
 closeBtn.onclick = () => {
   location.reload();
 };
