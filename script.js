@@ -58,6 +58,9 @@ function createButtons(grid, isPatient) {
 
     grid.appendChild(btn);
   });
+
+  // Initialize grid visibility flag
+  grid.setAttribute('data-visible', 'false');
 }
 
 /* Initialize blood buttons */
@@ -68,28 +71,29 @@ createButtons(donorGrid, false);
 document.querySelectorAll('.role-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.nextElementSibling;
-
-    // Check if grid is currently visible
-    const isVisible = Array.from(grid.children).some(b => b.style.opacity === '1');
+    const isVisible = grid.getAttribute('data-visible') === 'true';
 
     if (isVisible) {
       // Retract grid
       [...grid.children].forEach(b => {
         b.style.transform = 'scale(0)';
         b.style.opacity = '0';
-        b.classList.remove('selected');
+        b.classList.remove('selected'); // deselect any selected buttons
       });
 
-      // Clear selections on this side
+      // Clear selections for this side
       if (btn.textContent === "PATIENT") selectedPatient = null;
       else selectedDonor = null;
 
       // Hide Confirm button
       confirmBtn.classList.remove("show");
+
+      // Update visibility flag
+      grid.setAttribute('data-visible', 'false');
       return;
     }
 
-    // Otherwise, show grid with staggered animation
+    // Show grid with staggered animation
     const buttons = grid.children;
     for (let i = 0; i < buttons.length; i++) {
       setTimeout(() => {
@@ -97,6 +101,9 @@ document.querySelectorAll('.role-btn').forEach(btn => {
         buttons[i].style.opacity = '1';
       }, i * 100);
     }
+
+    // Update visibility flag
+    grid.setAttribute('data-visible', 'true');
   });
 });
 
