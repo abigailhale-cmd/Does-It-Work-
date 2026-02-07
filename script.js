@@ -38,12 +38,12 @@ function createButtons(grid, isPatient) {
         if (isPatient) selectedPatient = null;
         else selectedDonor = null;
 
-        // Slide Confirm button back down
+        // Slide Confirm button down if visible
         confirmBtn.classList.remove("show");
         return;
       }
 
-      // Select new button
+      // Otherwise, select this button
       [...grid.children].forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
 
@@ -64,10 +64,32 @@ function createButtons(grid, isPatient) {
 createButtons(patientGrid, true);
 createButtons(donorGrid, false);
 
-/* Staggered blood button animation when main buttons clicked */
+/* Toggle blood grids when main buttons clicked */
 document.querySelectorAll('.role-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.nextElementSibling;
+
+    // Check if grid is currently visible
+    const isVisible = Array.from(grid.children).some(b => b.style.opacity === '1');
+
+    if (isVisible) {
+      // Retract grid
+      [...grid.children].forEach(b => {
+        b.style.transform = 'scale(0)';
+        b.style.opacity = '0';
+        b.classList.remove('selected');
+      });
+
+      // Clear selections on this side
+      if (btn.textContent === "PATIENT") selectedPatient = null;
+      else selectedDonor = null;
+
+      // Hide Confirm button
+      confirmBtn.classList.remove("show");
+      return;
+    }
+
+    // Otherwise, show grid with staggered animation
     const buttons = grid.children;
     for (let i = 0; i < buttons.length; i++) {
       setTimeout(() => {
