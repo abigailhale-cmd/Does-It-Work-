@@ -30,15 +30,15 @@ function createButtons(grid, isPatient) {
     btn.classList.add("blood-btn");
 
     btn.onclick = () => {
-      // Remove selected from siblings
       [...grid.children].forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
 
       if (isPatient) selectedPatient = type;
       else selectedDonor = type;
 
+      /* Show confirm button with slide-up animation if both selected */
       if (selectedPatient && selectedDonor) {
-        confirmBtn.style.display = "inline-block";
+        confirmBtn.classList.add("show");
       }
     };
 
@@ -49,11 +49,17 @@ function createButtons(grid, isPatient) {
 createButtons(patientGrid, true);
 createButtons(donorGrid, false);
 
-/* Show blood buttons only when main button clicked */
+/* Staggered blood button animation */
 document.querySelectorAll('.role-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.nextElementSibling;
-    grid.style.display = 'grid';
+    const buttons = grid.children;
+    for (let i = 0; i < buttons.length; i++) {
+      setTimeout(() => {
+        buttons[i].style.transform = 'scale(1)';
+        buttons[i].style.opacity = '1';
+      }, i * 100); // 100ms delay between each button
+    }
   });
 });
 
