@@ -1,69 +1,93 @@
+/* Background gradient */
 body {
   font-family: Arial, sans-serif;
-  background: #fffaf5; /* marshmallow white */
+  background: linear-gradient(135deg, #fffaf5, #ffe5e0);
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 30px;
 }
 
+/* Title */
 h1 {
-  color: #8b0000; /* blood red */
+  color: #8B0000; /* blood red */
+  font-size: 60px;
+  margin-bottom: 40px;
 }
 
+/* Layout for main buttons */
 .role-container {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 80px;
   margin-top: 20px;
 }
 
+/* Main PATIENT/DONOR buttons */
 .role-btn {
-  background: #f4a261; /* soft orange */
+  background: #FF6B6B; /* coral pink */
   border: none;
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 20px 40px;
+  font-size: 24px;
   cursor: pointer;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: transform 0.1s;
+}
+.role-btn:hover {
+  transform: scale(1.05);
 }
 
+/* Blood type grids */
 .blood-grid {
-  display: grid;
+  display: none; /* hidden initially */
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
+/* Blood type buttons */
 .blood-btn {
-  background: #f4a261;
+  background: #FF6B6B;
   border: none;
-  padding: 10px;
+  padding: 15px;
+  font-size: 20px;
   cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.1s, border 0.1s;
 }
 
 .blood-btn.selected {
   transform: scale(1.08);
-  border: 2px solid yellow;
+  border: 2px solid #FFD700; /* yellow border */
 }
 
+/* Confirm button */
 #confirm-btn {
   display: none;
-  margin-top: 25px;
-  padding: 12px 25px;
-  background: #9cff57; /* lime green */
+  margin-top: 30px;
+  padding: 18px 40px;
+  background: #9CFF57; /* lime green */
   border: none;
-  font-size: 18px;
+  font-size: 24px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.1s;
+}
+#confirm-btn:hover {
+  transform: scale(1.05);
 }
 
+/* Result screen */
 #result-screen {
   display: none;
   position: fixed;
   inset: 0;
   color: white;
+  text-align: center;
+  padding-top: 200px;
 }
 
 #result-text {
-  font-size: 48px;
-  margin-top: 200px;
+  font-size: 60px;
 }
 
 #close-btn {
@@ -73,5 +97,7 @@ h1 {
   background: white;
   color: black;
   border: 1px solid black;
+  font-size: 24px;
   cursor: pointer;
+  border-radius: 6px;
 }
