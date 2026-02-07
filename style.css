@@ -36,7 +36,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Blood type grids (hidden initially) */
+/* Blood type grids */
 .blood-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -44,7 +44,7 @@ h1 {
   margin-top: 10px;
 }
 
-/* Blood type buttons (start invisible for stagger) */
+/* Blood type buttons */
 .blood-btn {
   background: #FF6B6B;
   border: none;
@@ -64,7 +64,7 @@ h1 {
 
 /* Confirm button */
 #confirm-btn {
-  display: none;
+  display: inline-block;
   margin-top: 30px;
   padding: 18px 40px;
   background: #9CFF57; /* lime green */
@@ -72,10 +72,29 @@ h1 {
   font-size: 24px;
   cursor: pointer;
   border-radius: 8px;
-  transition: transform 0.1s;
+
+  /* Start hidden & below */
+  opacity: 0;
+  transform: translateY(50px) scale(0.5);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
+#confirm-btn.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Bounce effect on hover */
 #confirm-btn:hover {
-  transform: scale(1.05);
+  animation: bounce 0.4s;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-10px) scale(1.05); }
+  50%  { transform: translateY(0) scale(1.02); }
+  70%  { transform: translateY(-5px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 /* Result screen */
