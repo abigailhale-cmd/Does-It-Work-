@@ -1,3 +1,17 @@
+/* Reset default button styles for mobile */
+button {
+  color: inherit;           /* inherit text color unless overridden */
+  -webkit-appearance: none; /* remove iOS default styling */
+  -moz-appearance: none;    /* remove Firefox default styling */
+  appearance: none;
+  text-decoration: none;    /* remove underline if treated like link */
+  font-family: inherit;     /* match page font */
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
 /* Background gradient */
 body {
   font-family: Arial, sans-serif;
@@ -25,10 +39,9 @@ h1 {
 /* Main PATIENT/DONOR buttons */
 .role-btn {
   background: #FF6B6B; /* coral pink */
-  border: none;
+  color: white;         /* text color */
   padding: 20px 40px;
   font-size: 24px;
-  cursor: pointer;
   border-radius: 8px;
   transition: transform 0.1s;
 }
@@ -47,10 +60,9 @@ h1 {
 /* Blood type buttons */
 .blood-btn {
   background: #FF6B6B;
-  border: none;
+  color: white;
   padding: 15px;
   font-size: 20px;
-  cursor: pointer;
   border-radius: 6px;
   transform: scale(0);
   opacity: 0;
@@ -68,9 +80,8 @@ h1 {
   margin-top: 30px;
   padding: 18px 40px;
   background: #9CFF57; /* lime green */
-  border: none;
+  color: green;        /* text color */
   font-size: 24px;
-  cursor: pointer;
   border-radius: 8px;
 
   /* Start hidden & below */
@@ -119,6 +130,5 @@ h1 {
   color: black;
   border: 1px solid black;
   font-size: 24px;
-  cursor: pointer;
   border-radius: 6px;
 }
