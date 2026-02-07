@@ -22,7 +22,7 @@ const compatibility = {
   "O-": ["O-"]
 };
 
-/* Create blood type buttons */
+/* Create blood type buttons with toggle selection */
 function createButtons(grid, isPatient) {
   bloodTypes.forEach(type => {
     const btn = document.createElement("button");
@@ -30,13 +30,27 @@ function createButtons(grid, isPatient) {
     btn.classList.add("blood-btn");
 
     btn.onclick = () => {
+      const currentlySelected = btn.classList.contains("selected");
+
+      // Deselect if clicking the same button
+      if (currentlySelected) {
+        btn.classList.remove("selected");
+        if (isPatient) selectedPatient = null;
+        else selectedDonor = null;
+
+        // Slide Confirm button back down
+        confirmBtn.classList.remove("show");
+        return;
+      }
+
+      // Select new button
       [...grid.children].forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
 
       if (isPatient) selectedPatient = type;
       else selectedDonor = type;
 
-      /* Show confirm button with slide-up animation if both selected */
+      // Show Confirm button if both sides selected
       if (selectedPatient && selectedDonor) {
         confirmBtn.classList.add("show");
       }
@@ -46,10 +60,11 @@ function createButtons(grid, isPatient) {
   });
 }
 
+/* Initialize blood buttons */
 createButtons(patientGrid, true);
 createButtons(donorGrid, false);
 
-/* Staggered blood button animation */
+/* Staggered blood button animation when main buttons clicked */
 document.querySelectorAll('.role-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.nextElementSibling;
@@ -58,12 +73,12 @@ document.querySelectorAll('.role-btn').forEach(btn => {
       setTimeout(() => {
         buttons[i].style.transform = 'scale(1)';
         buttons[i].style.opacity = '1';
-      }, i * 100); // 100ms delay between each button
+      }, i * 100);
     }
   });
 });
 
-/* Confirm logic */
+/* Confirm button logic */
 confirmBtn.onclick = () => {
   const isCompatible = compatibility[selectedPatient].includes(selectedDonor);
 
