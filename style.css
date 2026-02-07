@@ -66,12 +66,14 @@ h1 {
   border-radius: 6px;
   transform: scale(0);
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease, border 0.1s;
+  transition: transform 0.3s ease, opacity 0.3s ease, border 0.1s, background 0.2s;
 }
 
+/* Selected blood type */
 .blood-btn.selected {
   transform: scale(1.1);
   border: 2px solid #FFD700; /* yellow */
+  background: #FF8C8C;       /* lighter coral pink when selected */
 }
 
 /* Confirm button */
@@ -122,6 +124,7 @@ h1 {
   font-size: 60px;
 }
 
+/* Bigger X button for easier clicking */
 #close-btn {
   position: absolute;
   top: 10px;
@@ -129,6 +132,9 @@ h1 {
   background: white;
   color: black;
   border: 1px solid black;
-  font-size: 24px;
-  border-radius: 6px;
+  font-size: 36px; /* bigger text */
+  width: 50px;     /* bigger clickable area */
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
 }
