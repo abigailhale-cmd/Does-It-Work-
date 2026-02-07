@@ -36,15 +36,15 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Blood type grids */
+/* Blood type grids (hidden initially) */
 .blood-grid {
-  display: none; /* hidden initially */
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-top: 10px;
 }
 
-/* Blood type buttons */
+/* Blood type buttons (start invisible for stagger) */
 .blood-btn {
   background: #FF6B6B;
   border: none;
@@ -52,12 +52,14 @@ h1 {
   font-size: 20px;
   cursor: pointer;
   border-radius: 6px;
-  transition: transform 0.1s, border 0.1s;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, border 0.1s;
 }
 
 .blood-btn.selected {
-  transform: scale(1.08);
-  border: 2px solid #FFD700; /* yellow border */
+  transform: scale(1.1);
+  border: 2px solid #FFD700; /* yellow */
 }
 
 /* Confirm button */
