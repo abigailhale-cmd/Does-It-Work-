@@ -30,43 +30,48 @@
       line-height: 1.6;
     }
 
-    /* Punnett square grid */
-    .punnett-wrapper {
-      display: grid;
-      grid-template-columns: 60px 180px 180px;
-      grid-template-rows: 50px 120px 120px;
-      gap: 0;
-      justify-content: center;
-      align-items: center;
+    /* Punnett square container */
+    .punnett-container {
+      display: inline-block;
       margin-top: 40px;
     }
 
-    /* Top parent labels */
-    .top-label {
-      font-size: 22px;
+    /* Top parent alleles */
+    .top-labels {
+      display: flex;
+      justify-content: center;
+      gap: 180px;
+      margin-left: 120px;
+      margin-bottom: 10px;
+      font-size: 26px;
       font-weight: bold;
-      text-align: center;
     }
 
-    /* Side parent labels */
-    .side-label {
-      font-size: 22px;
-      font-weight: bold;
-      text-align: right;
-      padding-right: 10px;
+    /* Punnett row with side labels */
+    .punnett-row {
       display: flex;
-      align-items: center;  /* center vertically with row */
-      justify-content: flex-end;
+      align-items: stretch; /* allows vertical alignment of side labels */
+    }
+
+    /* Side parent alleles */
+    .side-label {
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* aligns Iᴬ at top-middle, i at bottom-middle */
+      font-size: 26px;
+      font-weight: bold;
     }
 
     td {
       border: 3px solid #8B0000;
       width: 180px;
       height: 120px;
-      font-size: 22px;
+      font-size: 26px;
       text-align: center;
       vertical-align: middle;
-      line-height: 1.3;
+      line-height: 1.4;
+      padding: 8px;
     }
 
     .back-btn {
@@ -112,23 +117,32 @@
     Example cross: Parent 1 (I<sup>A</sup> i) × Parent 2 (I<sup>B</sup> i)
   </p>
 
-  <div class="punnett-wrapper">
-    <!-- Top-left empty cell -->
-    <div></div>
+  <div class="punnett-container">
 
-    <!-- Top parent labels -->
-    <div class="top-label">I<sup>B</sup></div>
-    <div class="top-label">i</div>
+    <!-- Top parent alleles -->
+    <div class="top-labels">
+      <div>I<sup>B</sup></div>
+      <div>i</div>
+    </div>
 
-    <!-- Side parent label I^A -->
-    <div class="side-label" style="grid-row: 2 / 3;">I<sup>A</sup></div>
-    <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
-    <td>I<sup>A</sup>i<br>(A)</td>
+    <!-- Punnett square row with side labels -->
+    <div class="punnett-row">
+      <div class="side-label">
+        <div style="flex:1; display:flex; align-items:center; justify-content:flex-end;">I<sup>A</sup></div>
+        <div style="flex:1; display:flex; align-items:center; justify-content:flex-end;">i</div>
+      </div>
+      <table>
+        <tr>
+          <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
+          <td>I<sup>A</sup>i<br>(A)</td>
+        </tr>
+        <tr>
+          <td>I<sup>B</sup>i<br>(B)</td>
+          <td>ii<br>(O)</td>
+        </tr>
+      </table>
+    </div>
 
-    <!-- Side parent label i -->
-    <div class="side-label" style="grid-row: 3 / 4;">i</div>
-    <td>I<sup>B</sup>i<br>(B)</td>
-    <td>ii<br>(O)</td>
   </div>
 
   <p>
