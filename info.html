@@ -32,15 +32,17 @@
     /* Punnett square container */
     .punnett-container {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
+    /* Top parent alleles */
     .top-labels {
       display: flex;
       justify-content: center;
-      gap: 120px;
-      margin-left: 80px;
-      font-size: 22px;
+      gap: 180px;
+      margin-left: 120px;
+      margin-bottom: 10px;
+      font-size: 26px;
       font-weight: bold;
     }
 
@@ -49,11 +51,12 @@
       align-items: center;
     }
 
+    /* Side parent alleles */
     .side-label {
-      width: 80px;
+      width: 120px;
       text-align: right;
-      padding-right: 10px;
-      font-size: 22px;
+      padding-right: 15px;
+      font-size: 26px;
       font-weight: bold;
     }
 
@@ -63,20 +66,22 @@
     }
 
     td {
-      border: 2px solid #8B0000;
-      width: 120px;
-      height: 80px;
-      font-size: 22px;
+      border: 3px solid #8B0000;
+      width: 180px;
+      height: 120px;
+      font-size: 26px;
       text-align: center;
       vertical-align: middle;
+      line-height: 1.4;
+      padding: 8px;
     }
 
     .back-btn {
-      margin-top: 50px;
-      padding: 18px 40px;
+      margin-top: 60px;
+      padding: 20px 48px;
       background: #FF6B6B;
       color: white;
-      font-size: 24px;
+      font-size: 26px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
@@ -115,13 +120,14 @@
   </p>
 
   <div class="punnett-container">
+
     <!-- Top parent alleles (TEXT ONLY) -->
     <div class="top-labels">
       <div>I<sup>B</sup></div>
       <div>i</div>
     </div>
 
-    <!-- Punnett square rows -->
+    <!-- Punnett square -->
     <div class="punnett-row">
       <div class="side-label">I<sup>A</sup></div>
       <table>
@@ -139,6 +145,7 @@
     <div class="punnett-row">
       <div class="side-label">i</div>
     </div>
+
   </div>
 
   <p>
