@@ -29,19 +29,37 @@
       line-height: 1.6;
     }
 
-    table {
-      margin: 30px auto;
-      border-collapse: collapse;
-      font-size: 22px;
+    /* Punnett square layout */
+    .punnett-wrapper {
+      display: inline-grid;
+      grid-template-columns: auto 120px 120px;
+      grid-template-rows: auto 80px 80px;
+      gap: 0;
+      margin-top: 30px;
+      align-items: center;
     }
 
-    th, td {
+    .top-label {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .side-label {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .cell {
       border: 2px solid #8B0000;
-      padding: 15px;
       width: 120px;
       height: 80px;
-      text-align: center;
-      vertical-align: middle;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
     }
 
     .back-btn {
@@ -87,23 +105,22 @@
     Example cross: Parent 1 (I<sup>A</sup> i) × Parent 2 (I<sup>B</sup> i)
   </p>
 
-  <table>
-    <tr>
-      <th></th>
-      <th>I<sup>B</sup></th>
-      <th>i</th>
-    </tr>
-    <tr>
-      <th>I<sup>A</sup></th>
-      <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
-      <td>I<sup>A</sup>i<br>(A)</td>
-    </tr>
-    <tr>
-      <th>i</th>
-      <td>I<sup>B</sup>i<br>(B)</td>
-      <td>ii<br>(O)</td>
-    </tr>
-  </table>
+  <!-- TRUE Punnett Square: only 4 boxes -->
+  <div class="punnett-wrapper">
+    <!-- Top parent alleles -->
+    <div></div>
+    <div class="top-label">I<sup>B</sup></div>
+    <div class="top-label">i</div>
+
+    <!-- Side parent alleles -->
+    <div class="side-label">I<sup>A</sup></div>
+    <div class="cell">I<sup>A</sup>I<sup>B</sup><br>(AB)</div>
+    <div class="cell">I<sup>A</sup>i<br>(A)</div>
+
+    <div class="side-label">i</div>
+    <div class="cell">I<sup>B</sup>i<br>(B)</div>
+    <div class="cell">ii<br>(O)</div>
+  </div>
 
   <p>
     This Punnett square shows all possible offspring blood types:
