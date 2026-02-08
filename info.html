@@ -30,39 +30,31 @@
     }
 
     /* Punnett square container */
-    .punnett-container {
-      display: inline-block;
+    .punnett-wrapper {
+      display: inline-grid;
+      grid-template-columns: 50px 180px 180px;
+      grid-template-rows: 50px 120px 120px;
+      gap: 0;
       margin-top: 40px;
+      align-items: center;
     }
 
     /* Top parent alleles */
-    .top-labels {
-      display: flex;
-      justify-content: center;
-      gap: 180px;
-      margin-left: 120px;
-      margin-bottom: 10px;
-      font-size: 26px;
+    .top-label {
+      text-align: center;
       font-weight: bold;
-    }
-
-    .punnett-row {
-      display: flex;
-      align-items: center;
+      font-size: 26px;
     }
 
     /* Side parent alleles */
     .side-label {
-      width: 120px;
       text-align: right;
-      padding-right: 15px;
-      font-size: 26px;
       font-weight: bold;
-    }
-
-    /* ONLY the 4 outcome boxes */
-    table {
-      border-collapse: collapse;
+      font-size: 26px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
 
     td {
@@ -119,33 +111,22 @@
     Example cross: Parent 1 (I<sup>A</sup> i) × Parent 2 (I<sup>B</sup> i)
   </p>
 
-  <div class="punnett-container">
+  <div class="punnett-wrapper">
+    <!-- Top-left empty cell -->
+    <div></div>
+    <!-- Top parent alleles -->
+    <div class="top-label">I<sup>B</sup></div>
+    <div class="top-label">i</div>
 
-    <!-- Top parent alleles (TEXT ONLY) -->
-    <div class="top-labels">
-      <div>I<sup>B</sup></div>
-      <div>i</div>
-    </div>
+    <!-- Left parent allele I^A -->
+    <div class="side-label" style="grid-row: 2 / 3;">I<sup>A</sup></div>
+    <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
+    <td>I<sup>A</sup>i<br>(A)</td>
 
-    <!-- Punnett square -->
-    <div class="punnett-row">
-      <div class="side-label">I<sup>A</sup></div>
-      <table>
-        <tr>
-          <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
-          <td>I<sup>A</sup>i<br>(A)</td>
-        </tr>
-        <tr>
-          <td>I<sup>B</sup>i<br>(B)</td>
-          <td>ii<br>(O)</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="punnett-row">
-      <div class="side-label">i</div>
-    </div>
-
+    <!-- Left parent allele i -->
+    <div class="side-label" style="grid-row: 3 / 4;">i</div>
+    <td>I<sup>B</sup>i<br>(B)</td>
+    <td>ii<br>(O)</td>
   </div>
 
   <p>
