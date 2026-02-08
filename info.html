@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genetics Information</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #8B0000;
+      font-size: 60px;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 40px;
+      margin-top: 50px;
+    }
+
+    p {
+      font-size: 22px;
+      max-width: 900px;
+      margin: 15px auto;
+      line-height: 1.6;
+    }
+
+    table {
+      margin: 30px auto;
+      border-collapse: collapse;
+      font-size: 22px;
+    }
+
+    th, td {
+      border: 2px solid #8B0000;
+      padding: 15px;
+      width: 100px;
+      height: 70px;
+      text-align: center;
+    }
+
+    .back-btn {
+      margin-top: 50px;
+      padding: 18px 40px;
+      background: #FF6B6B;
+      color: white;
+      font-size: 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Blood Type Genetics</h1>
+
+  <h2>Dominant vs. Recessive</h2>
+  <p>
+    Blood type is controlled by alleles. The A (IA) and B (IB) alleles
+    are dominant, while the O allele (i) is recessive.
+    A recessive trait only appears when both alleles are recessive.
+  </p>
+
+  <h2>Codominance</h2>
+  <p>
+    A and B alleles are codominant. This means that when both
+    are present, they are expressed equally.
+    This results in blood type AB.
+  </p>
+
+  <h2>Multiple Alleles</h2>
+  <p>
+    Blood type is an example of multiple alleles.
+    There are three possible alleles in the population: IA, IB, and i.
+    Each person inherits two of these alleles.
+  </p>
+
+  <h2>Punnett Square Example</h2>
+  <p>
+    Example cross: Parent 1 (IA i) × Parent 2 (IB i)
+  </p>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>IB</th>
+      <th>i</th>
+    </tr>
+    <tr>
+      <th>IA</th>
+      <td>AB</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td>B</td>
+      <td>O</td>
+    </tr>
+  </table>
+
+  <p>
+    This Punnett square shows all possible offspring blood types:
+    A, B, AB, and O.
+  </p>
+
+  <button class="back-btn"
+    onclick="window.location.href='index.html'">
+    ← Back to Does It Work?
+  </button>
+
+</body>
+</html>
