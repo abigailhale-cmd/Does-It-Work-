@@ -29,37 +29,46 @@
       line-height: 1.6;
     }
 
-    /* Punnett square layout */
-    .punnett-wrapper {
-      display: inline-grid;
-      grid-template-columns: auto 120px 120px;
-      grid-template-rows: auto 80px 80px;
-      gap: 0;
+    /* Punnett square container */
+    .punnett-container {
+      display: inline-block;
       margin-top: 30px;
-      align-items: center;
     }
 
-    .top-label {
+    .top-labels {
+      display: flex;
+      justify-content: center;
+      gap: 120px;
+      margin-left: 80px;
       font-size: 22px;
       font-weight: bold;
+    }
+
+    .punnett-row {
+      display: flex;
+      align-items: center;
     }
 
     .side-label {
-      font-size: 22px;
-      font-weight: bold;
+      width: 80px;
       text-align: right;
       padding-right: 10px;
+      font-size: 22px;
+      font-weight: bold;
     }
 
-    .cell {
+    /* ONLY the 4 outcome boxes */
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
       border: 2px solid #8B0000;
       width: 120px;
       height: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       font-size: 22px;
+      text-align: center;
+      vertical-align: middle;
     }
 
     .back-btn {
@@ -88,7 +97,7 @@
   <h2>Codominance</h2>
   <p>
     The I<sup>A</sup> and I<sup>B</sup> alleles are codominant.
-    When both are present, they are expressed equally,
+    When both alleles are present, they are expressed equally,
     resulting in blood type AB.
   </p>
 
@@ -105,21 +114,31 @@
     Example cross: Parent 1 (I<sup>A</sup> i) × Parent 2 (I<sup>B</sup> i)
   </p>
 
-  <!-- TRUE Punnett Square: only 4 boxes -->
-  <div class="punnett-wrapper">
-    <!-- Top parent alleles -->
-    <div></div>
-    <div class="top-label">I<sup>B</sup></div>
-    <div class="top-label">i</div>
+  <div class="punnett-container">
+    <!-- Top parent alleles (TEXT ONLY) -->
+    <div class="top-labels">
+      <div>I<sup>B</sup></div>
+      <div>i</div>
+    </div>
 
-    <!-- Side parent alleles -->
-    <div class="side-label">I<sup>A</sup></div>
-    <div class="cell">I<sup>A</sup>I<sup>B</sup><br>(AB)</div>
-    <div class="cell">I<sup>A</sup>i<br>(A)</div>
+    <!-- Punnett square rows -->
+    <div class="punnett-row">
+      <div class="side-label">I<sup>A</sup></div>
+      <table>
+        <tr>
+          <td>I<sup>A</sup>I<sup>B</sup><br>(AB)</td>
+          <td>I<sup>A</sup>i<br>(A)</td>
+        </tr>
+        <tr>
+          <td>I<sup>B</sup>i<br>(B)</td>
+          <td>ii<br>(O)</td>
+        </tr>
+      </table>
+    </div>
 
-    <div class="side-label">i</div>
-    <div class="cell">I<sup>B</sup>i<br>(B)</div>
-    <div class="cell">ii<br>(O)</div>
+    <div class="punnett-row">
+      <div class="side-label">i</div>
+    </div>
   </div>
 
   <p>
