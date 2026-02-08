@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Does It Work?</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>Does It Work?</h1>
 
   <div class="role-container">
-    <div class="role">
+    <div>
       <button class="role-btn">PATIENT</button>
-      <div class="blood-grid" id="patient-grid"></div>
+      <div id="patient-grid" class="blood-grid"></div>
     </div>
 
-    <div class="role">
+    <div>
       <button class="role-btn">DONOR</button>
-      <div class="blood-grid" id="donor-grid"></div>
+      <div id="donor-grid" class="blood-grid"></div>
+    </div>
+
+    <!-- NEW BUTTON -->
+    <div>
+      <button class="role-btn info-btn"
+        onclick="window.location.href='info.html'">
+        GENETICS INFO
+      </button>
     </div>
   </div>
 
