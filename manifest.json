@@ -1,18 +1,18 @@
 {
-  "name": "'Does It Work?' Genetic Compatiblity Guide",
+  "name": "'Does It Work?' Genetic Compatibility Guide",
   "short_name": "Does It Work?",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#b11226",
+  "background_color": "#FF6F61",
+  "theme_color": "#FF6F61",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
