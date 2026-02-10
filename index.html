@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#F">
+<link rel="icon" href="icon-192.png" type="image/png">
+
   <meta charset="UTF-8">
   <title>Does It Work?</title>
 
@@ -39,6 +44,14 @@
       </button>
     </div>
   </div>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker Registered'))
+      .catch(err => console.error('Service Worker registration failed:', err));
+  }
+</script>
 
   <button id="confirm-btn">Confirm?</button>
 
