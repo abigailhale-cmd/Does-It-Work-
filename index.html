@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Does It Work?</title>
-  
-  <!-- Link to your stylesheet -->
+
+  <!-- Mobile friendly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- PWA Manifest -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-
-  <!-- Theme color for browser UI -->
-  <meta name="theme-color" content="#ff0000">
-
-  <!-- Favicon (optional) -->
+  <meta name="theme-color" content="#b11226">
   <link rel="icon" href="icon-192.png" type="image/png">
-
-  <!-- Mobile-friendly viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -34,7 +30,6 @@
       <div id="donor-grid" class="blood-grid"></div>
     </div>
 
-    <!-- NEW BUTTON -->
     <div>
       <button class="role-btn info-btn"
         onclick="window.location.href='info.html'">
@@ -50,15 +45,13 @@
     <div id="result-text"></div>
   </div>
 
-  <!-- Your script -->
+  <!-- Main script -->
   <script src="script.js"></script>
 
-  <!-- Service Worker Registration -->
+  <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(() => console.log('Service Worker registered'))
-        .catch(err => console.log('Service Worker failed:', err));
+      navigator.serviceWorker.register('sw.js');
     }
   </script>
 
