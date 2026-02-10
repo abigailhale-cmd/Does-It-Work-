@@ -3,7 +3,7 @@
   "short_name": "Does It Work?",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#FF6F61",
+  "background_color": "#ffffff",
   "theme_color": "#FF6F61",
   "icons": [
     {
