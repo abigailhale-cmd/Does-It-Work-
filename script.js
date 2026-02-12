@@ -10,6 +10,9 @@ const closeBtn = document.getElementById("close-btn");
 let selectedPatient = null;
 let selectedDonor = null;
 
+// Track if a grid is currently animating
+let animatingGrid = null;
+
 /* Compatibility rules */
 const compatibility = {
   "AB+": bloodTypes,
@@ -30,85 +33,83 @@ function createButtons(grid, isPatient) {
     btn.classList.add("blood-btn");
 
     btn.onclick = () => {
+      if (animatingGrid) return; // Prevent selection during animation
+
       const currentlySelected = btn.classList.contains("selected");
 
-      // Deselect if clicking the same button
       if (currentlySelected) {
         btn.classList.remove("selected");
         if (isPatient) selectedPatient = null;
         else selectedDonor = null;
-
-        // Slide Confirm button down if visible
         confirmBtn.classList.remove("show");
         return;
       }
 
-      // Otherwise, select this button
       [...grid.children].forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
 
       if (isPatient) selectedPatient = type;
       else selectedDonor = type;
 
-      // Show Confirm button if both sides selected
-      if (selectedPatient && selectedDonor) {
-        confirmBtn.classList.add("show");
-      }
+      if (selectedPatient && selectedDonor) confirmBtn.classList.add("show");
     };
 
     grid.appendChild(btn);
   });
 
-  // Initialize grid visibility flag
   grid.setAttribute('data-visible', 'false');
 }
 
-/* Initialize blood buttons */
+/* Initialize grids */
 createButtons(patientGrid, true);
 createButtons(donorGrid, false);
 
-/* Toggle blood grids when main buttons clicked */
+/* Toggle blood grids */
 document.querySelectorAll('.role-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.nextElementSibling;
     const isVisible = grid.getAttribute('data-visible') === 'true';
 
+    if (animatingGrid) return; // Ignore clicks while animating
+
     if (isVisible) {
       // Retract grid
-      [...grid.children].forEach(b => {
-        b.style.transform = 'scale(0)';
-        b.style.opacity = '0';
-        b.classList.remove('selected'); // deselect any selected buttons
+      animatingGrid = grid;
+      const buttons = [...grid.children];
+      buttons.reverse().forEach((b, i) => {
+        setTimeout(() => {
+          b.style.transform = 'scale(0)';
+          b.style.opacity = '0';
+          b.classList.remove('selected');
+          if (i === buttons.length - 1) {
+            grid.setAttribute('data-visible', 'false');
+            animatingGrid = null;
+            if (btn.textContent === "PATIENT") selectedPatient = null;
+            else selectedDonor = null;
+            confirmBtn.classList.remove("show");
+          }
+        }, i * 100);
       });
-
-      // Clear selections for this side
-      if (btn.textContent === "PATIENT") selectedPatient = null;
-      else selectedDonor = null;
-
-      // Hide Confirm button
-      confirmBtn.classList.remove("show");
-
-      // Update visibility flag
-      grid.setAttribute('data-visible', 'false');
       return;
     }
 
     // Show grid with staggered animation
+    animatingGrid = grid;
     const buttons = grid.children;
     for (let i = 0; i < buttons.length; i++) {
       setTimeout(() => {
         buttons[i].style.transform = 'scale(1)';
         buttons[i].style.opacity = '1';
+        if (i === buttons.length - 1) animatingGrid = null;
       }, i * 100);
     }
-
-    // Update visibility flag
     grid.setAttribute('data-visible', 'true');
   });
 });
 
-/* Confirm button logic */
+/* Confirm button */
 confirmBtn.onclick = () => {
+  if (!selectedPatient || !selectedDonor) return;
   const isCompatible = compatibility[selectedPatient].includes(selectedDonor);
 
   if (isCompatible) {
