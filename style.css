@@ -1,18 +1,18 @@
-/* Reset default button styles for mobile */
+/* Reset default button styles */
 button {
-  color: inherit;           
-  -webkit-appearance: none; 
-  -moz-appearance: none;    
+  color: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
-  text-decoration: none;    
-  font-family: inherit;     
+  text-decoration: none;
+  font-family: inherit;
   cursor: pointer;
   border: none;
   background: none;
   padding: 0;
 }
 
-/* Background gradient */
+/* Base Layout */
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #fffaf5, #ffe5e0);
@@ -28,7 +28,7 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* Layout for main buttons */
+/* Main layout */
 .role-container {
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@ h1 {
 /* Main buttons */
 .role-btn {
   background: #FF6B6B;
-  color: white;         
+  color: white;
   padding: 20px 40px;
   font-size: 24px;
   border-radius: 8px;
@@ -58,7 +58,7 @@ h1 {
   margin-top: 10px;
 }
 
-/* Blood type buttons */
+/* Blood buttons */
 .blood-btn {
   background: #FF6B6B;
   color: white;
@@ -82,7 +82,7 @@ h1 {
   margin-top: 30px;
   padding: 18px 40px;
   background: #9CFF57;
-  color: green;        
+  color: green;
   font-size: 24px;
   border-radius: 8px;
   opacity: 0;
@@ -121,7 +121,6 @@ h1 {
   font-size: 60px;
 }
 
-/* Close button */
 #close-btn {
   position: absolute;
   top: 10px;
@@ -130,15 +129,15 @@ h1 {
   color: black;
   border: 1px solid black;
   font-size: 36px;
-  width: 50px;     
+  width: 50px;
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
 }
 
-/* ---------------- MOBILE FIX ---------------- */
+/* ---------------- PORTRAIT (Phones) ---------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: portrait) {
 
   body {
     padding: 20px;
@@ -165,43 +164,56 @@ h1 {
   #result-text {
     font-size: 36px;
   }
-
 }
 
-/* iPhone landscape fix ONLY */
-@media (max-width: 950px) and (orientation: landscape) {
+/* ---------------- LANDSCAPE (Phones) ---------------- */
+
+@media (max-height: 500px) and (orientation: landscape) {
 
   body {
     padding: 10px;
+    overflow: hidden; /* NO SCROLLING */
   }
 
   h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin: 5px 0 10px 0;
   }
 
   .role-container {
     flex-direction: row;
-    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
   }
 
-  .role-btn {
-    font-size: 16px;
-    padding: 10px 18px;
+  /* Make grids wide instead of tall */
+  .blood-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
   }
 
   .blood-btn {
-    font-size: 16px;
-    padding: 10px;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .role-btn {
+    font-size: 14px;
+    padding: 8px 14px;
   }
 
   #confirm-btn {
-    font-size: 18px;
-    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 6px 14px;
   }
 
   #result-text {
-    font-size: 28px;
+    font-size: 24px;
   }
 
+  #result-screen {
+    padding-top: 80px;
+  }
 }
