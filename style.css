@@ -1,34 +1,35 @@
-/* Reset default button styles */
+/* ---------------- RESET ---------------- */
 button {
-  color: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  color: inherit;           
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
   appearance: none;
-  text-decoration: none;
-  font-family: inherit;
+  text-decoration: none;    
+  font-family: inherit;     
   cursor: pointer;
   border: none;
   background: none;
   padding: 0;
 }
 
-/* Base Layout */
+/* ---------------- BODY ---------------- */
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #fffaf5, #ffe5e0);
   text-align: center;
   margin: 0;
   padding: 30px;
+  overflow-x: hidden;
 }
 
-/* Title */
+/* ---------------- TITLE ---------------- */
 h1 {
-  color: #8B0000;
+  color: #8B0000; /* blood red */
   font-size: 60px;
   margin-bottom: 40px;
 }
 
-/* Main layout */
+/* ---------------- MAIN BUTTONS ---------------- */
 .role-container {
   display: flex;
   justify-content: center;
@@ -36,10 +37,9 @@ h1 {
   margin-top: 20px;
 }
 
-/* Main buttons */
 .role-btn {
-  background: #FF6B6B;
-  color: white;
+  background: #FF6B6B; /* coral pink */
+  color: white;         
   padding: 20px 40px;
   font-size: 24px;
   border-radius: 8px;
@@ -50,7 +50,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Blood grids */
+/* ---------------- BLOOD GRID ---------------- */
 .blood-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -58,12 +58,12 @@ h1 {
   margin-top: 10px;
 }
 
-/* Blood buttons */
+/* ---------------- BLOOD BUTTONS ---------------- */
 .blood-btn {
   background: #FF6B6B;
   color: white;
-  padding: 15px;
-  font-size: 20px;
+  padding: 12px 18px;   /* smaller than main buttons */
+  font-size: 18px;       /* smaller than main buttons */
   border-radius: 6px;
   transform: scale(0);
   opacity: 0;
@@ -76,13 +76,13 @@ h1 {
   background: #FF8C8C;
 }
 
-/* Confirm button */
+/* ---------------- CONFIRM BUTTON ---------------- */
 #confirm-btn {
   display: inline-block;
   margin-top: 30px;
   padding: 18px 40px;
-  background: #9CFF57;
-  color: green;
+  background: #9CFF57; 
+  color: green;        
   font-size: 24px;
   border-radius: 8px;
   opacity: 0;
@@ -107,7 +107,7 @@ h1 {
   100% { transform: translateY(0) scale(1); }
 }
 
-/* Result screen */
+/* ---------------- RESULT SCREEN ---------------- */
 #result-screen {
   display: none;
   position: fixed;
@@ -121,6 +121,7 @@ h1 {
   font-size: 60px;
 }
 
+/* ---------------- CLOSE BUTTON ---------------- */
 #close-btn {
   position: absolute;
   top: 10px;
@@ -129,16 +130,14 @@ h1 {
   color: black;
   border: 1px solid black;
   font-size: 36px;
-  width: 50px;
+  width: 50px;     
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
 }
 
-/* ---------------- PORTRAIT (Phones) ---------------- */
-
-@media (max-width: 768px) and (orientation: portrait) {
-
+/* ---------------- MOBILE PORTRAIT ---------------- */
+@media (max-width: 768px) {
   body {
     padding: 20px;
   }
@@ -158,7 +157,8 @@ h1 {
   }
 
   .blood-btn {
-    font-size: 18px;
+    font-size: 16px;
+    padding: 10px 15px;
   }
 
   #result-text {
@@ -166,36 +166,63 @@ h1 {
   }
 }
 
-/* ---------------- LANDSCAPE (Phones) ---------------- */
-
-@media (max-height: 500px) and (orientation: landscape) {
-
+/* ---------------- MOBILE LANDSCAPE ---------------- */
+@media (max-width: 950px) and (orientation: landscape) {
   body {
     padding: 10px;
-    overflow: hidden; /* NO SCROLLING */
   }
 
   h1 {
-    font-size: 22px;
-    margin: 5px 0 10px 0;
+    font-size: 28px;
+    margin-bottom: 20px;
   }
 
   .role-container {
     flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
+    gap: 40px;
   }
 
-  /* Make grids wide instead of tall */
-  .blood-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+  .role-btn {
+    font-size: 18px;
+    padding: 12px 20px;
   }
 
   .blood-btn {
-    font-size: 12px;
-    padding: 6px;
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  #confirm-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  #result-text {
+    font-size: 28px;
+  }
+
+  /* 2x4 pairs layout for blood buttons */
+  .blood-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+}
+
+/* ---------------- TIGHT LANDSCAPE HEIGHT ---------------- */
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .role-container {
+    gap: 20px;
+    margin-top: 10px;
   }
 
   .role-btn {
@@ -203,14 +230,15 @@ h1 {
     padding: 8px 14px;
   }
 
-  #confirm-btn {
-    margin-top: 10px;
+  .blood-btn {
     font-size: 14px;
-    padding: 6px 14px;
+    padding: 6px 12px;
   }
 
-  #result-text {
-    font-size: 24px;
+  #confirm-btn {
+    margin-top: 15px;
+    font-size: 16px;
+    padding: 8px 16px;
   }
 
   #result-screen {
