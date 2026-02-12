@@ -23,7 +23,7 @@ body {
 
 /* Title */
 h1 {
-  color: #8B0000; /* blood red */
+  color: #8B0000;
   font-size: 60px;
   margin-bottom: 40px;
 }
@@ -36,20 +36,21 @@ h1 {
   margin-top: 20px;
 }
 
-/* Main PATIENT/DONOR buttons */
+/* Main buttons */
 .role-btn {
-  background: #FF6B6B; /* coral pink */
+  background: #FF6B6B;
   color: white;         
   padding: 20px 40px;
   font-size: 24px;
   border-radius: 8px;
   transition: transform 0.1s;
 }
+
 .role-btn:hover {
   transform: scale(1.05);
 }
 
-/* Blood type grids */
+/* Blood grids */
 .blood-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -69,18 +70,10 @@ h1 {
   transition: transform 0.3s ease, opacity 0.3s ease, border 0.1s, background 0.2s;
 }
 
-/* Selected blood type - desktop */
 .blood-btn.selected {
   transform: scale(1.1);
-  border: 2px solid #FFD700; /* yellow */
-  background: #FF8C8C;       /* slightly lighter coral pink */
-}
-
-/* Selected blood type - mobile */
-@media (max-width: 768px) {
-  .blood-btn.selected {
-    background: #FFAAAA; /* a little lighter for mobile */
-  }
+  border: 2px solid #FFD700;
+  background: #FF8C8C;
 }
 
 /* Confirm button */
@@ -88,7 +81,7 @@ h1 {
   display: inline-block;
   margin-top: 30px;
   padding: 18px 40px;
-  background: #9CFF57; /* lime green */
+  background: #9CFF57;
   color: green;        
   font-size: 24px;
   border-radius: 8px;
@@ -102,7 +95,6 @@ h1 {
   transform: translateY(0) scale(1);
 }
 
-/* Bounce effect on hover */
 #confirm-btn:hover {
   animation: bounce 0.4s;
 }
@@ -129,7 +121,7 @@ h1 {
   font-size: 60px;
 }
 
-/* Bigger X button for easier mobile tapping */
+/* Close button */
 #close-btn {
   position: absolute;
   top: 10px;
@@ -137,9 +129,41 @@ h1 {
   background: white;
   color: black;
   border: 1px solid black;
-  font-size: 36px; /* bigger text */
+  font-size: 36px;
   width: 50px;     
   height: 50px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* ---------------- MOBILE FIX ---------------- */
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .role-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .role-btn {
+    font-size: 20px;
+    padding: 15px 25px;
+  }
+
+  .blood-btn {
+    font-size: 18px;
+  }
+
+  #result-text {
+    font-size: 36px;
+  }
+
 }
