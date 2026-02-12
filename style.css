@@ -167,3 +167,41 @@ h1 {
   }
 
 }
+
+/* iPhone landscape fix ONLY */
+@media (max-width: 950px) and (orientation: landscape) {
+
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .role-container {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .role-btn {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+
+  .blood-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  #confirm-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  #result-text {
+    font-size: 28px;
+  }
+
+}
